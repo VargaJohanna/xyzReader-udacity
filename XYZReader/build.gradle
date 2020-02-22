@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:+'
     }
 }
 apply plugin: 'com.android.application'
@@ -13,22 +13,22 @@ repositories {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 25
+        minSdkVersion 21
+        targetSdkVersion 28
     }
 }
 
 dependencies {
-    compile "com.android.support:support-v4:$androidSupportVersion"
-    compile "com.android.support:support-v13:$androidSupportVersion"
-    compile "com.android.support:appcompat-v7:$androidSupportVersion"
-    compile "com.android.support:palette-v7:$androidSupportVersion"
-    compile "com.android.support:recyclerview-v7:$androidSupportVersion"
-    compile "com.android.support:cardview-v7:$androidSupportVersion"
+    compile 'androidx.legacy:legacy-support-v4:1.0.0'
+    compile 'androidx.legacy:legacy-support-v13:1.0.0'
+    compile 'androidx.appcompat:appcompat:1.0.0'
+    compile 'androidx.palette:palette:1.0.0'
+    compile 'androidx.recyclerview:recyclerview:1.0.0'
+    compile 'androidx.cardview:cardview:1.0.0'
     compile 'com.squareup.okhttp3:okhttp:3.1.2'
     compile files('libs/volley.jar')
 }
