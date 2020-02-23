@@ -72,6 +72,7 @@ public class ArticleListActivity extends AppCompatActivity implements
         if (savedInstanceState == null) {
             refresh();
         }
+        mRecyclerView.setAdapter(new Adapter(null));
     }
 
     private void refresh() {
