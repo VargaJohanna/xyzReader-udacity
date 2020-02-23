@@ -20,7 +20,8 @@
             app:contentScrim="?attr/colorPrimary"
             android:layout_gravity="start"
             app:expandedTitleGravity="bottom"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            android:elevation="8dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -37,9 +38,7 @@
                     android:src="@drawable/logo"
                     app:layout_collapseParallaxMultiplier="0.7" />
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -53,9 +52,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingStart="@dimen/default_margin"
-            android:paddingTop="@dimen/default_margin"
-            android:paddingEnd="@dimen/default_margin"
+            android:paddingStart="@dimen/margin_extra_small"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_extra_small"
             android:paddingBottom="@dimen/default_margin"
             android:scrollbarStyle="outsideOverlay" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
