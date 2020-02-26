@@ -1,26 +1,11 @@
-package com.example.xyzreader.ui.list;
+package com.example.xyzreader.ui;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -28,13 +13,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 import com.example.xyzreader.data.UpdaterService;
-import com.example.xyzreader.ui.ArticleDetailActivity;
-import com.example.xyzreader.ui.DynamicHeightNetworkImageView;
-import com.example.xyzreader.ui.ImageLoaderHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -64,7 +56,6 @@ public class ArticleListActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
-        ArticleListViewModel model = new ViewModelProvider(this).get(ArticleListViewModel.class);
 
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         mRecyclerView = findViewById(R.id.recycler_view);
@@ -78,21 +69,21 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     private void refresh() {
-        startService(new Intent(this, UpdaterService.class));
+//        startService(new Intent(this, UpdaterService.class));
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        registerReceiver(mRefreshingReceiver,
-                new IntentFilter(UpdaterService.BROADCAST_ACTION_STATE_CHANGE));
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unregisterReceiver(mRefreshingReceiver);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        registerReceiver(mRefreshingReceiver,
+//                new IntentFilter(UpdaterService.BROADCAST_ACTION_STATE_CHANGE));
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        unregisterReceiver(mRefreshingReceiver);
+//    }
 
     private boolean mIsRefreshing = false;
 
@@ -132,9 +123,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
+    public void onPointerCaptureChanged(boolean hasCapture) {}
 
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
         private Cursor mCursor;

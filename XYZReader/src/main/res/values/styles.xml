@@ -26,6 +26,7 @@
         <item name="android:windowExitTransition">@transition/exit_list</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowReenterTransition">@transition/slide_top</item>
+        <item name="android:fontFamily">@font/ptsans</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay">
