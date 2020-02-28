@@ -25,4 +25,6 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="dark_background">#212121</color>
+    <color name="white">#ffffff</color>
+    <color name="white_50">#8fff</color>
 </resources>
