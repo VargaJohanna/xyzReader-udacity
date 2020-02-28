@@ -102,7 +102,7 @@
         android:id="@+id/share_fab"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:stateListAnimator="@anim/fab_state_list_anim"
+        android:stateListAnimator="@animator/fab_state_list_anim"
         android:background="@drawable/add_fab_background"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"

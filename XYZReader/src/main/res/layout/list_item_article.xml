@@ -31,14 +31,15 @@
 
         <TextView
             android:id="@+id/article_title"
+            style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:ellipsize="marquee"
             android:maxLines="2"
             android:minLines="2"
             android:paddingStart="@dimen/default_margin"
             android:paddingTop="@dimen/default_margin"
-            android:textColor="@color/icons"
             android:paddingEnd="@dimen/default_margin"
             android:paddingBottom="@dimen/default_margin"
             android:background="@color/dark_background"
