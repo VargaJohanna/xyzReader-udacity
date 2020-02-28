@@ -1,6 +1,7 @@
 package com.example.xyzreader.ui;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +16,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.RecyclerView;
@@ -147,12 +146,9 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    vh.thumbnailView.setTransitionName(getString(R.string.shared_image_transition));
-                    Pair<View, String> pair = Pair.create((View)vh.thumbnailView, vh.thumbnailView.getTransitionName());
-                    ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)vh.thumbnailView.getContext(), pair.first, pair.second);
+                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation((Activity)vh.thumbnailView.getContext()).toBundle();
                     startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))),
-                            optionsCompat.toBundle());
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
                 }
             });
             return vh;

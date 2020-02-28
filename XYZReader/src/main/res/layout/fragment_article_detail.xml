@@ -24,7 +24,6 @@
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView
                     android:id="@+id/photo"
-                    android:transitionName="@string/shared_image_transition"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:scaleType="centerCrop"

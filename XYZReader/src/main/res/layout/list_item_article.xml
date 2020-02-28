@@ -8,6 +8,7 @@
     android:elevation="8dp"
     android:clickable="true"
     android:focusable="true"
+    app:cardBackgroundColor="@color/dark_background"
     android:foreground="?selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,14 +19,13 @@
 
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
-            android:transitionName="@string/shared_image_transition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/dark_background"
             app:layout_constraintBottom_toTopOf="@id/article_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/dark_background"/>
 
         <TextView
             android:id="@+id/article_title"
@@ -40,12 +40,12 @@
             android:paddingTop="@dimen/default_margin"
             android:paddingEnd="@dimen/default_margin"
             android:paddingBottom="@dimen/default_margin"
-            android:background="@color/dark_background"
             app:layout_constraintTop_toBottomOf="@+id/thumbnail"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Second Variety" />
+            tools:text="Second Variety"
+            tools:background="@color/dark_background"/>
 
         <TextView
             android:id="@+id/article_subtitle"
