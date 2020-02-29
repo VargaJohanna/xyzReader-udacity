@@ -5,6 +5,7 @@ import android.app.ActivityOptions;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Html;
@@ -49,7 +50,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     // Use default locale format
     private SimpleDateFormat outputFormat = new SimpleDateFormat();
     // Most time functions can only handle 1902 - 2037
-    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2,1,1);
+    private GregorianCalendar START_OF_EPOCH = new GregorianCalendar(2, 1, 1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +69,21 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     private void refresh() {
-//        startService(new Intent(this, UpdaterService.class));
+        startService(new Intent(this, UpdaterService.class));
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        registerReceiver(mRefreshingReceiver,
-//                new IntentFilter(UpdaterService.BROADCAST_ACTION_STATE_CHANGE));
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        unregisterReceiver(mRefreshingReceiver);
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        registerReceiver(mRefreshingReceiver,
+                new IntentFilter(UpdaterService.BROADCAST_ACTION_STATE_CHANGE));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(mRefreshingReceiver);
+    }
 
     private boolean mIsRefreshing = false;
 
@@ -122,7 +123,8 @@ public class ArticleListActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {}
+    public void onPointerCaptureChanged(boolean hasCapture) {
+    }
 
     private class Adapter extends RecyclerView.Adapter<ViewHolder> {
         private Cursor mCursor;
@@ -146,7 +148,7 @@ public class ArticleListActivity extends AppCompatActivity implements
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation((Activity)vh.thumbnailView.getContext()).toBundle();
+                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation((Activity) vh.thumbnailView.getContext()).toBundle();
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
                 }
@@ -182,8 +184,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             } else {
                 holder.subtitleView.setText(Html.fromHtml(
                         outputFormat.format(publishedDate)
-                        + "<br/>" + " by "
-                        + mCursor.getString(ArticleLoader.Query.AUTHOR)));
+                                + "<br/>" + " by "
+                                + mCursor.getString(ArticleLoader.Query.AUTHOR)));
             }
             holder.thumbnailView.setImageUrl(
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
