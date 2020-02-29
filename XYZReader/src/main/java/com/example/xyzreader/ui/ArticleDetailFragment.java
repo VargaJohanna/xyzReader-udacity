@@ -116,16 +116,6 @@ public class ArticleDetailFragment extends Fragment implements
         getLoaderManager().initLoader(0, null, this);
     }
 
-    private void setEnterAnimation() {
-        Slide slide = new Slide(Gravity.BOTTOM);
-        slide.addTarget(R.id.detailContainer);
-        slide.setInterpolator(
-                AnimationUtils.loadInterpolator(getContext(), android.R.interpolator.linear_out_slow_in)
-        );
-        slide.setDuration(200);
-        getActivity().getWindow().setEnterTransition(slide);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -137,7 +127,6 @@ public class ArticleDetailFragment extends Fragment implements
                 mTopInset = insets.top;
             }
         });
-        setEnterAnimation();
         mScrollView = mRootView.findViewById(R.id.scrollview);
         mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
             @Override
