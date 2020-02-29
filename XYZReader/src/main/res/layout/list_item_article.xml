@@ -8,7 +8,6 @@
     android:elevation="8dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/dark_background"
     android:foreground="?selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,14 +24,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/dark_background"/>
+            android:background="@color/dark_background"/>
 
         <TextView
             android:id="@+id/article_title"
             style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:ellipsize="marquee"
             android:maxLines="2"
             android:minLines="2"
@@ -45,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Second Variety"
-            tools:background="@color/dark_background"/>
+            android:background="@color/accent_light"/>
 
         <TextView
             android:id="@+id/article_subtitle"

@@ -25,10 +25,9 @@
                 <ImageView
                     android:id="@+id/photo"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="@dimen/detail_photo_max_height"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center_horizontal"
-                    tools:layout_height="200dp"
                     />
 
                 <View
@@ -75,6 +74,7 @@
                     <TextView
                         android:id="@+id/article_byline"
                         style="@style/SecondaryText"
+                        android:textColor="@color/white_50"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         tools:text="May 1, 1953\nby Philip K. Dick"/>

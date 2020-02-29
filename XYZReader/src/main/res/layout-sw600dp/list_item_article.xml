@@ -8,7 +8,6 @@
     android:elevation="8dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/dark_background"
     android:foreground="?selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,18 +20,17 @@
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/dark_background"
             app:layout_constraintBottom_toTopOf="@id/article_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/dark_background"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/article_title"
             style="@style/SecondaryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:ellipsize="marquee"
             android:maxLines="2"
             android:paddingTop="@dimen/default_margin"
@@ -43,7 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Second Variety"
-            tools:background="@color/dark_background"/>
+            android:background="@color/accent_light"/>
 
         <TextView
             android:id="@+id/article_subtitle"
@@ -60,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/article_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:background="@color/dark_background"/>
+            android:background="@color/accent_light"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
