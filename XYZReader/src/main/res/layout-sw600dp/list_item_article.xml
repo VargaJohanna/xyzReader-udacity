@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="4dp"
     app:cardCornerRadius="4dp"
-    android:elevation="8dp"
+    android:stateListAnimator="@animator/card_state_anim"
+    app:cardElevation="@dimen/card_resting_elevation"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground">
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/dark_background"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@id/article_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
