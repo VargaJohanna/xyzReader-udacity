@@ -10,15 +10,11 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.format.DateUtils;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +32,6 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.ui.DrawInsetsFrameLayout;
 import com.example.xyzreader.ui.ImageLoaderHelper;
-import com.example.xyzreader.ui.ObservableScrollView;
 import com.example.xyzreader.ui.list.ArticleListActivity;
 
 import java.text.ParseException;
@@ -141,23 +136,10 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
-//        mScrollView = mRootView.findViewById(R.id.scrollview);
-//        mScrollView.setCallbacks(new ObservableScrollView.Callbacks() {
-//            @Override
-//            public void onScrollChanged() {
-//                mScrollY = mScrollView.getScrollY();
-//                getActivityCast().onUpButtonFloorChanged(mItemId, ArticleDetailFragment.this);
-////                mPhotoContainerView.setTranslationY((int) (mScrollY - mScrollY / PARALLAX_FACTOR));
-//                updateStatusBar();
-//            }
-//        });
-
         toolbarHeaderView = mRootView.findViewById(R.id.toolbar_header_view);
         floatingHeaderView = mRootView.findViewById(R.id.float_header_view);
         mPhotoView = mRootView.findViewById(R.id.photo);
         articleBodyRecycleView = mRootView.findViewById(R.id.details_recycle_view);
-
-//        mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
 
         mStatusBarColorDrawable = new ColorDrawable(0);
 
@@ -221,17 +203,11 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-//        TextView titleView = mRootView.findViewById(R.id.article_title);
-//        TextView bylineView = mRootView.findViewById(R.id.article_byline);
-//        bylineView.setMovementMethod(new LinkMovementMethod());
-//        TextView bodyView = mRootView.findViewById(R.id.article_body);
-
         if (mCursor != null) {
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
 
-//            titleView.setText(mCursor.getString(ArticleLoader.Query.TITLE));
             Date publishedDate = parsePublishedDate();
             Spanned bylineView;
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
@@ -285,9 +261,6 @@ public class ArticleDetailFragment extends Fragment implements
                     });
         } else {
             mRootView.setVisibility(View.GONE);
-//            titleView.setText("N/A");
-//            bylineView.setText("N/A");
-//            bodyView.setText("N/A");
         }
     }
 
