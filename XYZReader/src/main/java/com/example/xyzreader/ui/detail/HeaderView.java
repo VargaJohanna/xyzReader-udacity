@@ -58,6 +58,4 @@ public class HeaderView extends LinearLayout {
         else
             tv.setText(text);
     }
-
-
 }

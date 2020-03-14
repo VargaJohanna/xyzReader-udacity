@@ -16,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -255,8 +257,6 @@ public class ArticleDetailFragment extends Fragment implements
                     mCursor.getString(ArticleLoader.Query.TITLE), bylineView.toString());
             toolbarHeaderView.bindTo(
                     mCursor.getString(ArticleLoader.Query.TITLE), bylineView.toString());
-//            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
-//            Spanned text = (Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)));
             List<String> bodyText = Arrays.asList(mCursor.getString(ArticleLoader.Query.BODY).split("(\r\n\r\n)"));
             layoutManager = new LinearLayoutManager(getContext());
             articleBodyRecycleView.setLayoutManager(layoutManager);
@@ -272,8 +272,8 @@ public class ArticleDetailFragment extends Fragment implements
                                 Palette p = Palette.generate(bitmap, 12);
                                 mMutedColor = p.getDarkMutedColor(0xFF333333);
                                 mPhotoView.setImageBitmap(imageContainer.getBitmap());
-//                                mRootView.findViewById(R.id.meta_bar)
-//                                        .setBackgroundColor(mMutedColor);
+                                floatingHeaderView.setBackgroundColor(mMutedColor);
+                                floatingHeaderView.getBackground().setAlpha(160);
                                 updateStatusBar();
                             }
                         }

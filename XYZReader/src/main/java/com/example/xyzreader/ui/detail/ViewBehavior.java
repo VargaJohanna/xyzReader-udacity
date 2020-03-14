@@ -4,22 +4,15 @@ package com.example.xyzreader.ui.detail;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
-import com.example.xyzreader.R;
 import com.google.android.material.appbar.AppBarLayout;
 
 public class ViewBehavior extends CoordinatorLayout.Behavior<HeaderView> {
 
     private Context mContext;
-
-    private int mStartMarginLeft;
-    private int mEndMargintLeft;
-    private int mMarginRight;
-    private int mStartMarginBottom;
     private boolean isHide;
 
     public ViewBehavior(Context context, AttributeSet attrs) {
@@ -33,23 +26,16 @@ public class ViewBehavior extends CoordinatorLayout.Behavior<HeaderView> {
 
     @Override
     public boolean onDependentViewChanged(CoordinatorLayout parent, HeaderView child, View dependency) {
-        shouldInitProperties(child, dependency);
 
         int maxScroll = ((AppBarLayout) dependency).getTotalScrollRange();
         float percentage = Math.abs(dependency.getY()) / (float) maxScroll;
 
         float childPosition = dependency.getHeight()
                 + dependency.getY()
-                - child.getHeight()
-                - (getToolbarHeight() - child.getHeight()) * percentage / 2;
-
-
-        childPosition = childPosition - mStartMarginBottom * (1f - percentage);
+                - child.getHeight();
 
         CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) child.getLayoutParams();
-        lp.leftMargin = (int) (percentage * mEndMargintLeft) + mStartMarginLeft;
-        lp.rightMargin = mMarginRight;
-        child.setLayoutParams(lp);
+        lp.leftMargin = (int) (percentage);
 
         child.setY(childPosition);
 
@@ -63,29 +49,5 @@ public class ViewBehavior extends CoordinatorLayout.Behavior<HeaderView> {
             }
         }
         return true;
-    }
-
-    private void shouldInitProperties(HeaderView child, View dependency) {
-
-        if (mStartMarginLeft == 0)
-            mStartMarginLeft = mContext.getResources().getDimensionPixelOffset(R.dimen.default_margin);
-
-        if (mEndMargintLeft == 0)
-            mEndMargintLeft = mContext.getResources().getDimensionPixelOffset(R.dimen.default_margin);
-
-        if (mStartMarginBottom == 0)
-            mStartMarginBottom = mContext.getResources().getDimensionPixelOffset(R.dimen.default_margin);
-
-        if (mMarginRight == 0)
-            mMarginRight = mContext.getResources().getDimensionPixelOffset(R.dimen.default_margin);
-    }
-
-    public int getToolbarHeight() {
-        int result = 0;
-        TypedValue tv = new TypedValue();
-        if (mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            result = TypedValue.complexToDimensionPixelSize(tv.data, mContext.getResources().getDisplayMetrics());
-        }
-        return result;
     }
 }
