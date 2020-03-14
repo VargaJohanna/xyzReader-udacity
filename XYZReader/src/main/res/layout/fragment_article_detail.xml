@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+        <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/detail_app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +42,6 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin">
 
-
                 <include
                     android:id="@+id/toolbar_header_view"
                     layout="@layout/header_view"
@@ -44,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_marginEnd="@dimen/default_margin"
                     android:visibility="gone"
+                    app:layout_behavior="com.example.xyzreader.ui.detail.ViewBehavior"
                     />
             </Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -129,7 +135,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/details_recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/share_fab"
@@ -143,5 +153,6 @@
         android:elevation="@dimen/fab_elevation"
         app:tint="@color/white"
         android:contentDescription="@string/action_share"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>
